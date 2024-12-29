@@ -12,16 +12,24 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int[] imageResources = {R.drawable.img, R.drawable.img2}; // Array of images
+    private int currentImageIndex = 0; // Index to track the current image
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
-    public void changeImage(View view){
 
-        ImageView imageView=findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.img2);
+    public void changeImage(View view) {
+        ImageView imageView = findViewById(R.id.imageView);
+
+        // Update to the next image in the array
+        currentImageIndex = (currentImageIndex + 1) % imageResources.length;
+
+        // Set the new image
+        imageView.setImageResource(imageResources[currentImageIndex]);
     }
 }
+
+
